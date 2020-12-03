@@ -1,3 +1,7 @@
+#!/bin/sh
+
+# Programs Arrays
+
 xorgApps=(
   "xorg-server"
   "xf86-video-vesa"
@@ -105,10 +109,21 @@ zathura=(
   "zathura-ps"
 )
 
+programmingLanguages=(
+  "go"
+  "go-tools"
+)
+
 yayApps=(
   "polybar"
   "biber"
 )
+
+# Set Variables
+
+
+
+# Functions
 
 for i in "${xorgApps[@]}"
 do
