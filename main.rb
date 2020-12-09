@@ -210,6 +210,7 @@ end
 def makepkgInstall(folderName)
   `cd ~\Documents\.packages\\#{folderName}`
   `makepkg -si`
+end
 
 # Main code
 
