@@ -9,6 +9,15 @@ wallpapersDir = "https://gitlab.com/jhony75/wallpapers"
 # Git commands
 
 dmenuClone = "git clone https://git.suckless.org/dmenu"
+yayClone = "git clone https://aur.archlinux.org/yay.git"
+
+makepkgPrograms = [
+  yayClone,
+]
+
+makePrograms = [
+  dmenuClone
+]
 
 # Services
 
@@ -134,6 +143,9 @@ programs = [
     "qtpass",
     "xdo",
     "lightdm",
+    "reflector",
+    "pacman-contrib",
+    "stow",
   ],
 
   zathura=[
@@ -190,7 +202,23 @@ def yayInstall(name)
   `yay -S #{name} --noconfirm --needed --sudoloop`
 end
 
+def makeInstall(folderName)
+  `cd ~\Documents\.packages\\#{folderName}`
+  `sudo make clean install`
+end
+
+def makepkgInstall(folderName)
+  `cd ~\Documents\.packages\\#{folderName}`
+  `makepkg -si`
+
 # Main code
+
+`cd ~`
+`mkdir -p Documents\\.packages Pictures .local`
+`cd Pictures`
+`git clone #{wallpapersDir}`
+`cd ~\\.local`
+`git clone #{dotfilesDir} .`
 
 programs.each do |software_array|
   software_array.each do |software_name|
