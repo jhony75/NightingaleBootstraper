@@ -146,6 +146,10 @@ programs = [
     "reflector",
     "pacman-contrib",
     "stow",
+    "pacutils",
+    "exa",
+    "bat",
+    "ripgrep",
   ],
 
   zathura=[
