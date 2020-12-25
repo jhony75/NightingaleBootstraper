@@ -11,6 +11,12 @@ wallpapersDir = "https://gitlab.com/jhony75/wallpapers"
 dmenuClone = "git clone https://git.suckless.org/dmenu"
 yayClone = "git clone https://aur.archlinux.org/yay.git"
 
+# Curlable installs
+
+ohmyzsh = 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+
+powerLevel10K = "git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
 makepkgPrograms = [
   yayClone,
 ]
@@ -232,3 +238,6 @@ programs.each do |software_array|
 end
 
 `sudo systemctl enable lightdm.service`
+`chsh $(which zsh)`
+`ohmyzsh`
+`powerLevel10K`
