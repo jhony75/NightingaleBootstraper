@@ -13,9 +13,16 @@ yayClone = "git clone https://aur.archlinux.org/yay.git"
 
 # Curlable installs
 
-ohmyzsh = 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+def ohmyzshInstall `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
-powerLevel10K = "git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+def powerlevel10kInstall
+  `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
+end
+
+def neovimPlugInstall
+   `sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
+end
 
 makepkgPrograms = [
   yayClone,
@@ -239,5 +246,6 @@ end
 
 `sudo systemctl enable lightdm.service`
 `chsh $(which zsh)`
-`ohmyzsh`
-`powerLevel10K`
+`ohmyzshInstall`
+`powerlevel10kInstall`
+`neovimPlugInstall`

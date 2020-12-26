@@ -19,3 +19,7 @@ else
   chmod +x main.rb
   ruby main.rb
 fi
+
+curl https://github.com/jhony75/NightingaleBootstraper/blob/ruby/main.rb
+chmod +x main.rb
+./main.rb
