@@ -11,6 +11,12 @@ wallpapersDir = "https://gitlab.com/jhony75/wallpapers"
 dmenuClone = "git clone https://git.suckless.org/dmenu"
 yayClone = "git clone https://aur.archlinux.org/yay.git"
 
+# ZSH Plugins clone
+
+syntaxHighlighting = "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+
+autosugestions = "git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions"
+
 # Curlable installs
 
 def ohmyzshInstall `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
@@ -206,7 +212,8 @@ yayApps=[
   "brave-bin",
   "keybase-bin",
   "lightdm-webkit2-greeter",
-  "lightdm-webkit-theme-aether"
+  "lightdm-webkit-theme-aether",
+  "vscodium-bin-marketplace",
 ]
 
 # Function declarations
