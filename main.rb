@@ -192,6 +192,7 @@ programs = [
   programmingLanguages=[
     "go",
     "go-tools",
+    "node",
   ],
 
   fonts=[
@@ -227,12 +228,12 @@ def yayInstall(name)
 end
 
 def makeInstall(folderName)
-  `cd ~\Documents\.packages\\#{folderName}`
+  `cd ~\\Documents\\.packages\\#{folderName}`
   `sudo make clean install`
 end
 
 def makepkgInstall(folderName)
-  `cd ~\Documents\.packages\\#{folderName}`
+  `cd ~\\Documents\\.packages\\#{folderName}`
   `makepkg -si`
 end
 
