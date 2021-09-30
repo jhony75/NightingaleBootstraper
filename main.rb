@@ -9,7 +9,7 @@ wallpapersDir = "https://gitlab.com/jhony75/wallpapers"
 # Git commands
 
 dmenuClone = "git clone https://git.suckless.org/dmenu"
-yayClone = "git clone https://aur.archlinux.org/yay.git"
+paruClone = "git clone https://aur.archlinux.org/paru.git"
 
 # ZSH Plugins clone
 
@@ -30,8 +30,12 @@ def neovimPlugInstall
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
 end
 
+# Variables
+
+$aurHelper = "paru"
+
 makepkgPrograms = [
-  yayClone,
+  paruClone,
 ]
 
 makePrograms = [
@@ -204,7 +208,7 @@ programs = [
   ],
 ]
 
-yayApps=[
+aurApps=[
   "polybar",
   "biber",
   "pistol",
@@ -223,8 +227,10 @@ def install(name)
   `pacman -S #{name} --noconfirm --needed`
 end
 
-def yayInstall(name)
-  `yay -S #{name} --noconfirm --needed --sudoloop`
+def aurInstall(array)
+  array.each do |package|
+    puts "#{$aurHelper} -S #{package} --noconfirm --needed --sudoloop"
+  end
 end
 
 def makeInstall(folderName)
