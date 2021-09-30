@@ -8,7 +8,7 @@ timedatectl set-ntp true
 pacstrap /mnt base linux linux-firmware base-devel
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
-/usr/share/zoneinfo/America/Sao_Paulo
+ln -sf /usr/share/zoneinfo/America/Sao_Paulo
 hwclock --systohc
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
 echo KEYMAP=br-abnt2 >> /etc/vconsole.conf
@@ -21,6 +21,8 @@ export repodir="/home/$login/.local/src"; mkdir -p "$repodir"; chown -R "$login"
 echo "$login:$password" | chpasswd
 
 pacman -S grub-efi-x86_64 efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
-cp /usr/share/locale/en@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+
+chmod +x main.sh
+./main.sh
