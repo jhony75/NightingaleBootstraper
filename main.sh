@@ -1,131 +1,25 @@
-#!/bin/sh
+#!/bin/bash
 
-# Programs Arrays
+command_exists () {
+  command "$1" &> /dev/null ;
+}
 
-xorgApps=(
-  "xorg-server"
-  "xf86-video-vesa"
-  "xorg-bdftopcf"
-  "xorg-docs"
-  "xorg-font-util"
-  "xorg-fonts-75dpi"
-  "xorg-fonts-100dpi"
-  "xorg-fonts-encodings"
-  "xorg-iceauth"
-  "xorg-mkfontscale"
-  "xorg-server"
-  "xorg-server-common"
-  "xorg-server-devel"
-  "xorg-server-xephyr"
-  "xorg-server-xnest"
-  "xorg-server-xvfb"
-  "xorg-server-xwayland"
-  "xorg-sessreg"
-  "xorg-setxkbmap"
-  "xorg-smproxy"
-  "xorg-x11perf"
-  "xorg-xauth"
-  "xorg-xbacklight"
-  "xorg-xcmsdb"
-  "xorg-xcursorgen"
-  "xorg-xdpyinfo"
-  "xorg-xdriinfo"
-  "xorg-xev"
-  "xorg-xgamma"
-  "xorg-xhost"
-  "xorg-xinput"
-  "xorg-xkbcomp"
-  "xorg-xkbevd"
-  "xorg-xkbutils"
-  "xorg-xkill"
-  "xorg-xlsatoms"
-  "xorg-xlsclients"
-  "xorg-xmodmap"
-  "xorg-xpr"
-  "xorg-xprop"
-  "xorg-xrandr"
-  "xorg-xrdb"
-  "xorg-xrefresh"
-  "xorg-xset"
-  "xorg-xsetroot"
-  "xorg-xvinfo"
-  "xorg-xwd"
-  "xorg-xwininfo"
-  "xorg-xwud"
-  "xorg-bdftopcf"
-  "xorg-iceauth"
-  "xorg-mkfontscale"
-  "xorg-sessreg"
-  "xorg-setxkbmap"
-  "xorg-smproxy"
-  "xorg-x11perf"
-  "xorg-xauth"
-  "xorg-xbacklight"
-  "xorg-xcmsdb"
-  "xorg-xcursorgen"
-  "xorg-xdpyinfo"
-  "xorg-xdriinfo"
-  "xorg-xev"
-  "xorg-xgamma"
-  "xorg-xhost"
-  "xorg-xinput"
-  "xorg-xkbcomp"
-  "xorg-xkbevd"
-  "xorg-xkbutils"
-  "xorg-xkill"
-  "xorg-xlsatoms"
-  "xorg-xlsclients"
-  "xorg-xmodmap"
-  "xorg-xpr"
-  "xorg-xprop"
-  "xorg-xrandr"
-  "xorg-xrdb"
-  "xorg-xrefresh"
-  "xorg-xset"
-  "xorg-xsetroot"
-  "xorg-xvinfo"
-  "xorg-xwd"
-  "xorg-xwininfo"
-  "xorg-xwud"
-)
+pacman -Syyu --noconfirm
+pacman -S gcc
 
-windowManager=(
-  "bspwm"
-  "sxhkd"
-)
+if command_exists rbenv
+then
+  chmod +x main.rb
+  ruby main.rb
+else
+  gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 
-systemApps=(
-	"zsh"
-  "texlive-most"
-  "texlive-lang"
-  "adobe-source-code-pro-fonts"
-)
+  \curl -sSL https://get.rvm.io | bash -s stable --rails
+  echo "Ruby installed, now running main.rb"
+  chmod +x main.rb
+  ruby main.rb
+fi
 
-zathura=(
-  "zathura"
-  "zathura-cb"
-  "zathura-djvu"
-  "zathura-pdf-mupdf"
-  "zathura-ps"
-)
-
-programmingLanguages=(
-  "go"
-  "go-tools"
-)
-
-yayApps=(
-  "polybar"
-  "biber"
-)
-
-# Set Variables
-
-
-
-# Functions
-
-for i in "${xorgApps[@]}"
-do
-  echo $i
-done
+curl https://github.com/jhony75/NightingaleBootstraper/blob/ruby/main.rb
+chmod +x main.rb
+./main.rb
